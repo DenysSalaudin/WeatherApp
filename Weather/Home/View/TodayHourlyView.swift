@@ -44,12 +44,12 @@ struct HourlyView: View {
                             .frame(width:120)
                     }
                     .scaleEffect(1.1)
-                    HStack {
+                 /*   HStack {
                         Text(hourly.weather?.first?.main ?? "")
                         Image(systemName: customIcon(name: hourly.weather?.first?.main ?? ""))
                             .renderingMode(.original)
                     }.font(.headline)
-                        .scaleEffect(1)
+                        .scaleEffect(1)*/
                     RoundedRectangle(cornerRadius: 1)
                         .frame(height:1)
                         .padding()
