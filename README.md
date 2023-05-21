@@ -6,3 +6,4 @@ To start using this app, it will ask for permission to access your location. The
 The first screen always displays the name of your current location and the weather forecast for the current day and the next 7 days. If you tap on the view for the next 7 days, it will display the second view, which shows the hourly forecast for the next 48 hours. I divided the forecast into two parts: the first 24 hours and the second 24 hours.
 
 Additionally, on the first screen, you can see a search bar. Tapping on the search bar will bring up the keyboard, allowing you to type the name of the city for which you want to check the weather. To access the third view, you need to select a city from the search results. This will display the same weather forecast as in the first view, but for the selected city.
+![Friday, 19 May 2023 16:28:51](https://github.com/DenysSalaudin/WeatherApp/assets/122059775/9282e2e5-b055-4614-88ea-20a7681d373d)
