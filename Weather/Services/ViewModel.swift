@@ -18,6 +18,7 @@ final class ViewModel: ObservableObject {
     @Published var latCurrent: Double = 0.0
     @Published var lonCurrent: Double = 0.0
     @Published var cityCurrent: String = ""
+    let API_KEY = "API_KEY"
     var fake: String {
         if cityName.isEmpty {
             return "IIIIIIIIIIIIII"
@@ -28,7 +29,7 @@ final class ViewModel: ObservableObject {
     // Fetch current plase weather
    func fetchWeatherCurrent() async throws {
        do {
-           let feedURL = URL(string: "https://api.openweathermap.org/data/3.0/onecall?lat=\(latCurrent)&lon=\(lonCurrent)&exclude=minutely&appid=488d74ec4b354fe05db6ae9caf4f5347&units=imperial")!
+           let feedURL = URL(string: "https://api.openweathermap.org/data/3.0/onecall?lat=\(latCurrent)&lon=\(lonCurrent)&exclude=minutely&appid=\(API_KEY)&units=imperial")!
                let (data,_) = try await URLSession.shared.data(from: feedURL)
                let allData = try JSONDecoder().decode(Forecast.self, from: data)
                self.currentForecast = [allData]
@@ -40,7 +41,7 @@ final class ViewModel: ObservableObject {
     // Fetch Search plase weather
     func fetchWeather() async throws {
         do {
-            let feedURL = URL(string: "https://api.openweathermap.org/data/3.0/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely&appid=488d74ec4b354fe05db6ae9caf4f5347&units=imperial")!
+            let feedURL = URL(string: "https://api.openweathermap.org/data/3.0/onecall?lat=\(lat)&lon=\(lon)&exclude=minutely&appid=\(API_KEY)&units=imperial")!
             let (data,_) = try await URLSession.shared.data(from: feedURL)
             let allData = try JSONDecoder().decode(Forecast.self, from: data)
             self.forecast = [allData]
@@ -51,7 +52,7 @@ final class ViewModel: ObservableObject {
     }
     //Fetch location data
     func fetchLocation() async throws {
-        guard let feedURL = URL(string: "http://api.openweathermap.org/geo/1.0/direct?q=\(fake)\(cityName)&limit=10&appid=488d74ec4b354fe05db6ae9caf4f5347") else { return }
+        guard let feedURL = URL(string: "http://api.openweathermap.org/geo/1.0/direct?q=\(fake)\(cityName)&limit=10&appid=\(API_KEY)") else { return }
         do {
             let (data,_) = try await URLSession.shared.data(from: feedURL)
                let allData = try JSONDecoder().decode([LocationElement].self, from: data)
